@@ -1,0 +1,53 @@
+% Gauss_jacobi
+%exercício 2.2 apostila
+%não converge em 6 iterações mas converge em 12
+%Em 6 iterações batem os mesmos valores do exercício
+
+A = [10 3 1;
+     2 -10 3;
+     1 3 10];
+
+b = [14; -5; 14];
+
+x0 = [0; 0; 0];     
+tol = 1e-4;        
+max_iter = 6;     
+
+x = gauss_jacobi(A, b, x0, tol, max_iter)
+
+% Gauss_seidel
+
+A = [5 1 1;
+     3 4 1;
+     3 3 6];
+
+b = [5; 6; 0];
+
+x0 = [0; 0; 0];            
+tol = 0.05;            
+max_iter = 100;
+
+x = gauss_seidel(A, b, x0, tol, max_iter);
+disp(x);
+
+%Bisseção
+%Exemplo da apostila
+
+f = @(x) exp(x) - 4*x;
+raiz = bissecao(f, 0, 0.5, 1e-4)
+
+%Falsa posição
+%Exemplo da apostila
+%exp = exponencial
+f = @(x) exp(x) - 4*x;
+raiz = falsa_posicao(f, 0, 0.5, 1e-4)
+
+%newton_raphson
+%Exemplo da apostila
+f = @(x) x.^2 + x - 6;
+df = @(x) 2*x + 1;
+x0 = 1.5;
+aux = 1e-6;
+max_iter = 5;
+
+raiz = newton_raphson(f, df, x0, aux, max_iter)
