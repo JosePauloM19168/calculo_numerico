@@ -1,10 +1,10 @@
-function raiz = newton_raphson(f, df, x0, tol, max_iter)
+function raiz = newton_raphson(f, df, x0, aux, max_iter)
     phi = @(x) x - f(x)/df(x);  
 
     k = 0;
     while k < max_iter
         x1 = phi(x0);
-        if (f(x1)) <= tol || (x1 - x0) <= tol
+        if (f(x1)) <= aux || (x1 - x0) <= tol
             raiz = x1;
             return;
         endif
